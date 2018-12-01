@@ -1,0 +1,29 @@
+{
+  "name": "game-dogfood",
+  "version": "1.0.0",
+  "description": "Just a game in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riokf/game-dogfood.git"
+  },
+  "author": "Rio, Fortaleza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riokf/game-dogfood/issues"
+  },
+  "homepage": "https://github.com/riokf/game-dogfood#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "mongodb": "^2.2.19",
+    "rekuire": "^0.1.9",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}
