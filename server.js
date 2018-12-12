@@ -13,12 +13,21 @@ const port = 3000;
 function initRoutes()
 {
 	require('./app/routes/')(app);
+	app.use('/scripts', express.static(__dirname + '/app/scripts'));
+	app.use('/styles', express.static(__dirname + '/app/styles'));
 }
 
 function initSocket() 
 {
 	io.on('connection', function(socket) {
 		console.log("A user has connected to the server.");
+		socket.on('disconnect', function() {
+			console.log("A user has disconnected from the server.");
+		})
+
+		socket.on('gameEvent', function(msg, char) {
+			io.emit('gameEvent', msg, char);
+		})
 	});
 }
 
