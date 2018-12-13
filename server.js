@@ -21,13 +21,22 @@ function initSocket()
 {
 	io.on('connection', function(socket) {
 		console.log("A user has connected to the server.");
+
 		socket.on('disconnect', function() {
 			console.log("A user has disconnected from the server.");
-		})
+		});
 
-		socket.on('gameEvent', function(msg, char) {
-			io.emit('gameEvent', msg, char);
-		})
+		socket.on('markEvent', function(button, playerSign) {
+			io.emit('markEvent', button, playerSign);
+		});
+
+		socket.on('playerShiftEvent', function(playerMode) {
+			io.emit('playerShiftEvent', playerMode);
+		});
+
+		socket.on('scoreUpdateEvent', function(scorePOne, scorePTwo) {
+			io.emit('scoreUpdateEvent', scorePOne, scorePTwo);
+		});
 	});
 }
 

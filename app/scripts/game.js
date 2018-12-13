@@ -13,10 +13,6 @@ function main()
 		});
 	});
 
-	socket.on('gameEvent', function(msg, char) {
-		$(msg).text(char);
-	});
-
 	function buttonClick(button)
 	{
 		let row = parseInt(button.attr('id')[1], 10);
@@ -34,11 +30,27 @@ function main()
 			{
 				playerTurn = 0;
 			}
+
+			socket.emit("updateScoreEvent", scorePOne, scorePTwo);
+			socket.emit("playerShiftEvent", playerTurn);
 		}
 	}
 
 	function initialize()
 	{
+		socket.on('markEvent', function(msg, char) {
+			$(msg).text(char);
+		});
+
+		socket.on('playerShiftEvent', function(turn) {
+			playerTurn = turn;
+		});
+
+		socket.on('updateScoreEvent', function(scoreOne, scoreTwo) {
+			scorePOne = scoreOne;
+			scorePTwo = scoreTwo;
+		})
+
 		$("#B4-4").text("O");
 		$("#B5-5").text("O");
 		$("#B4-5").text("X");
@@ -68,7 +80,7 @@ function main()
 		}
 
 		buttonId = "#B" + (row).toString() + "-" + (col).toString();
-		socket.emit('gameEvent', buttonId, playerSign);
+		socket.emit('markEvent', buttonId, playerSign);
 
 		// Check top-left side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col - 1).toString();
@@ -86,7 +98,7 @@ function main()
 					{
 
 						buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextRow++;
 						nextCol++;
 						changes++;
@@ -111,7 +123,7 @@ function main()
 					while (nextRow != row)
 					{
 						buttonId = "#B" + (nextRow).toString() + "-" + (col).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextRow++;
 						changes++;
 					}
@@ -136,7 +148,7 @@ function main()
 					while (nextRow != row && nextCol != col)
 					{
 						buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextRow++;
 						nextCol--;
 						changes++;
@@ -161,7 +173,7 @@ function main()
 					while (nextCol != col)
 					{
 						buttonId = "#B" + (row).toString() + "-" + (nextCol).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextCol++;
 						changes++;
 					}
@@ -185,7 +197,7 @@ function main()
 					while (nextCol != col)
 					{
 						buttonId = "#B" + (row).toString() + "-" + (nextCol).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextCol--;
 						changes++;
 					}
@@ -210,7 +222,7 @@ function main()
 					while (nextRow != row && nextCol != col)
 					{
 						buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextRow++;
 						nextCol--;
 						changes++;
@@ -235,7 +247,7 @@ function main()
 					while (nextRow != row)
 					{
 						buttonId = "#B" + (nextRow).toString() + "-" + (col).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextRow--;
 						changes++;
 					}
@@ -260,7 +272,7 @@ function main()
 					while (nextRow != row && nextCol != col)
 					{
 						buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-						socket.emit('gameEvent', buttonId, playerSign);
+						socket.emit('markEvent', buttonId, playerSign);
 						nextRow--;
 						nextCol--;
 						changes++;
