@@ -1,0 +1,13 @@
+So far if you click the button it'll change the color to white
+the "try it" button will change the color to white
+
+for accessing buttons -> var x = document.getElementById("othello").rows[i].cells[0].getElementsByClassName("button")[0].style.background = "black";
+
+for on-click change
+-> var all_tr = $('tr');
+        $('td button').on('click', function () {
+          this.style.backgroundColor = "white";
+        });
+
+
+

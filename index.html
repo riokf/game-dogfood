@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <style>
+      }
+      .wrapper{
+        display: grid;
+        grid-template-columns: repeat(10);
+        grid-gap: 2 px;
+        
+      }
+      .grid-item{
+        background: green;
+        border: #333 1px solid;
+        padding: 1.5px;
+      }
+
+      .button{
+        margin: 0;
+        padding: 0;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background: black;
+        border: none;
+      }
+      .main{  
+        height: 100vh;
+        margin: 0 auto;
+        width: 440px;
+        text-align: center;
+      }
+
+      table, th, td {
+        border: 2px solid black;
+      }
+
+      table {
+        border-collapse: collapse;
+        background-color: green;
+        width: 250px;
+      }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class = "main">
+      <h1>OTHELLO</h1>
+      <table id="othello">
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>
+        <tr>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+          <td><button class="button"></button></td>
+        </tr>    
+      </table>
+      <button onclick="myFunction()">Try it</button>
+      <script>
+        var all_tr = $('tr');
+        $('td button').on('click', function () {
+          this.style.backgroundColor = "white";
+        });
+
+        
+        function myFunction() {
+          var i;
+          for (i = 0; i < 5; i++) {
+             var x = document.getElementById("othello").rows[i].cells[i].getElementsByClassName("button")[0].style.background = "black";
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
