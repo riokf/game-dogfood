@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head> 
-		<link rel = "stylesheet" href = "styles/style.css">
+		<link rel = "stylesheet" href = "styles/style.css" />
+		<link rel = "stylesheet" href = "toastr/toastr.min.css" />
+
 		<script src = "https://code.jquery.com/jquery-3.3.1.min.js" integrity = "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin = "anonymous"> </script>
+		<script type = "text/javascript" src = "toastr/toastr.min.js"> </script>
 		<script type = "text/javascript" src = "socket.io/socket.io.js"></script>
 		<script type = "text/javascript" src = "scripts/connection.js"></script>
 		<script type = "text/javascript" src = "scripts/game.js"></script>
@@ -131,5 +134,30 @@
 				<td> <button id = "B9-9"></button> </td>
 			</tr>
 		</table>
+
+		<strong> Game Panel </strong>
+		<table class = "score">
+			<tbody>
+				<tr>
+					<th>
+						<strong> Player 1 </strong>
+					</th>
+					<td>
+						<p id = "p1score"> </p>
+					</td>
+				</tr>
+
+
+				<tr>
+					<th>
+						<strong> Player 2 </strong>
+					</th>
+					<td>
+						<p id = "p2score"> </p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p id = "playerTurn"> </p>
 	</body>
 </html>

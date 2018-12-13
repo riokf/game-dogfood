@@ -15,6 +15,7 @@ function initRoutes()
 	require('./app/routes/')(app);
 	app.use('/scripts', express.static(__dirname + '/app/scripts'));
 	app.use('/styles', express.static(__dirname + '/app/styles'));
+	app.use('/toastr', express.static(__dirname + '/node_modules/toastr/build'));
 }
 
 function initSocket() 
@@ -34,8 +35,8 @@ function initSocket()
 			io.emit('playerShiftEvent', playerMode);
 		});
 
-		socket.on('scoreUpdateEvent', function(scorePOne, scorePTwo) {
-			io.emit('scoreUpdateEvent', scorePOne, scorePTwo);
+		socket.on('updateScoreEvent', function(scorePOne, scorePTwo) {
+			io.emit('updateScoreEvent', scorePOne, scorePTwo);
 		});
 	});
 }

@@ -38,18 +38,35 @@ function main()
 
 	function initialize()
 	{
+		toastr.options.preventDuplicates = true;
+		toastr.options.extendedTimeOut = 1;
+
 		socket.on('markEvent', function(msg, char) {
 			$(msg).text(char);
 		});
 
 		socket.on('playerShiftEvent', function(turn) {
 			playerTurn = turn;
+
+			if (turn == 0)
+			{
+				$("#playerTurn").text("It is Player 1's Turn! [O]");
+			}
+			else
+			{
+				$("#playerTurn").text("It is Player 2's Turn! [X]");
+			}
 		});
 
 		socket.on('updateScoreEvent', function(scoreOne, scoreTwo) {
 			scorePOne = scoreOne;
 			scorePTwo = scoreTwo;
-		})
+
+			console.log("I was here!");
+
+			$('#p1score').text(scorePOne.toString());
+			$('#p2score').text(scorePTwo.toString());
+		});
 
 		$("#B4-4").text("O");
 		$("#B5-5").text("O");
@@ -58,6 +75,12 @@ function main()
 
 		scorePOne = 2;
 		scorePTwo = 2;
+
+		$('#p1score').text(scorePOne.toString());
+		$('#p2score').text(scorePTwo.toString());
+
+		$("#playerTurn").text("It is Player 1's Turn! [O]");
+
 		playerTurn = 0;
 	}
 
@@ -282,6 +305,17 @@ function main()
 				}
 			}
 		}
+
+		if (playerTurn == 0)
+		{
+			scorePOne += changes;
+			scorePTwo -= changes;	
+		}
+		else
+		{
+			scorePOne -= changes;
+			scorePTwo += changes;
+		}
 	}
 
 	function verify(row, col)
@@ -412,6 +446,7 @@ function main()
 			}
 		}
 
+		toastr.error('Invalid Move');
 		return false;
 	}
 

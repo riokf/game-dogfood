@@ -1,3 +1,7 @@
+* {
+	font-family: Segoe UI; 
+}
+
 button {
 	background-color: white;
 	height: 30px;
@@ -6,4 +10,28 @@ button {
 
 button:hover {
 	background-color: green;
+}
+
+.grid {
+	margin: auto;
+	padding-bottom: 25px;
+}
+
+.score {
+	border: 1px solid black;
+	text-align: center;
+}
+
+.score > tbody > tr > * {
+	padding: 5px;
+}
+
+.score > tbody > tr > th {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.score > tbody > tr > td {
+	border: 1px solid black;
+	min-width: 25px;
 }
