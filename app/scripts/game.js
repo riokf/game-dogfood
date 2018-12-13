@@ -51,14 +51,14 @@ function main()
 			$('.grid').hide();
 			$('strong').hide();
 			$('.score').hide();
-			$("#playerTurn").text("Waiting for Player 2");
+			$("#gameStatus").text("Waiting for Player 2");
 		});
 
 		socket.on('gameDelete', function() {
 			$('.grid').hide();
 			$('strong').hide();
 			$('.score').hide();
-			$("#playerTurn").text("Opposing player has disconnected");
+			$("#gameStatus").text("Opposing player has disconnected");
 		});
 
 		socket.on('markEvent', function(msg, char) {
@@ -70,11 +70,11 @@ function main()
 
 			if (turn == 0)
 			{
-				$("#playerTurn").text("It is Player 1's Turn! [O]");
+				$("#gameStatus").text("It is Player 1's Turn! [O]");
 			}
 			else
 			{
-				$("#playerTurn").text("It is Player 2's Turn! [X]");
+				$("#gameStatus").text("It is Player 2's Turn! [X]");
 			}
 		});
 
@@ -99,7 +99,7 @@ function main()
 		$('#p1score').text(scorePOne.toString());
 		$('#p2score').text(scorePTwo.toString());
 
-		$("#playerTurn").text("It is Player 1's Turn! [O]");
+		$("#gameStatus").text("It is Player 1's Turn! [O]");
 
 		playerTurn = 0;
 	}
@@ -477,5 +477,18 @@ function main()
 		return false;
 	}
 
-	initialize();
+	socket.on("connectionValidityCheckEvent", function(response) {
+		if (response)
+		{
+			initialize();
+		}
+		else
+		{
+			$('.grid').hide();
+			$('strong').hide();
+			$('.score').hide();
+			$("#gameStatus").text("Connection is severed. The game room is full.");
+		}
+	});
+	socket.emit("connectionValidityCheckEvent");
 }

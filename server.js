@@ -35,6 +35,8 @@ function initSocket()
 
 		if (clients[0] == socket || clients[1] == socket)
 		{	
+			socket.emit('connectionValidityCheckEvent', true);
+
 			socket.on('markEvent', function(button, playerSign) {
 				io.emit('markEvent', button, playerSign);
 			});
@@ -65,9 +67,10 @@ function initSocket()
 				io.emit('gameDelete');
 			});
 		}
+
 		else
 		{
-			console.log(clients);
+			socket.emit('connectionValidityCheckEvent', false);
 		}
 	});
 }
