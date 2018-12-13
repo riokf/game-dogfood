@@ -239,15 +239,15 @@ function main()
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
 				if ($(buttonId).text() == playerSign)
 				{
-					nextRow++;
-					nextCol--;
+					nextRow--;
+					nextCol++;
 
 					while (nextRow != row && nextCol != col)
 					{
 						buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
 						socket.emit('markEvent', buttonId, playerSign);
-						nextRow++;
-						nextCol--;
+						nextRow--;
+						nextCol++;
 						changes++;
 					}
 
@@ -332,6 +332,13 @@ function main()
 		{
 			playerSign = 'X';
 			enemySign = 'O';
+		}
+
+		buttonId = "#B" + (row).toString() + "-" + (col).toString();
+		if ($(buttonId).text() != '')
+		{
+			toastr.error('Slot already filled', 'Invalid Move');
+			return false;
 		}
 
 		// Check top-left side
@@ -446,7 +453,7 @@ function main()
 			}
 		}
 
-		toastr.error('Invalid Move');
+		toastr.error('There are no surrounding changeable pieces', 'Invalid Move');
 		return false;
 	}
 
