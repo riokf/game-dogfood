@@ -70,11 +70,11 @@ function main()
 
 			if (turn == 0)
 			{
-				$("#gameStatus").text("It is Player 1's Turn! [O]");
+				$("#gameStatus").text("It is Player 1's Turn! [black]");
 			}
 			else
 			{
-				$("#gameStatus").text("It is Player 2's Turn! [X]");
+				$("#gameStatus").text("It is Player 2's Turn! [whitea]");
 			}
 		});
 
@@ -88,10 +88,10 @@ function main()
 			$('#p2score').text(scorePTwo.toString());
 		});
 
-		$("#B4-4").text("O");
-		$("#B5-5").text("O");
-		$("#B4-5").text("X");
-		$("#B5-4").text("X");
+		$("#B4-4").style.backgroundColor = "white";
+		$("#B5-5").style.backgroundColor = "white";
+		$("#B4-5").style.backgroundColor = "black";
+		$("#B5-4").style.backgroundColor = "black";
 
 		scorePOne = 2;
 		scorePTwo = 2;
@@ -99,7 +99,7 @@ function main()
 		$('#p1score').text(scorePOne.toString());
 		$('#p2score').text(scorePTwo.toString());
 
-		$("#gameStatus").text("It is Player 1's Turn! [O]");
+		$("#gameStatus").text("It is Player 1's Turn! white");
 
 		playerTurn = 0;
 	}
@@ -111,14 +111,14 @@ function main()
 
 		if (playerTurn == 0)
 		{
-			playerSign = 'O';
-			enemySign = 'X';
+			playerSign = 'white';
+			enemySign = 'black';
 			scorePOne += 1;
 		}
 		else
 		{
-			playerSign = 'X';
-			enemySign = 'O';
+			playerSign = 'black';
+			enemySign = 'white';
 			scorePTwo += 1;
 		}
 
@@ -127,12 +127,12 @@ function main()
 
 		// Check top-left side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col - 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row - 2, nextCol = col - 2; nextRow >= 0 && nextCol >= 0; nextRow--, nextCol--)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextRow++;
 					nextCol++;
@@ -154,12 +154,12 @@ function main()
 
 		// Check top side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row - 2; nextRow >= 0; nextRow--)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (col).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextRow++;
 
@@ -178,12 +178,12 @@ function main()
 
 		// Check top-right side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col + 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row - 2, nextCol = col + 2; nextRow >= 0 && nextCol<= 9; nextRow--, nextCol++)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextRow++;
 					nextCol--;
@@ -204,12 +204,12 @@ function main()
 
 		// Check left side
 		buttonId = "#B" + (row).toString() + "-" + (col - 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextCol = col - 2; nextCol >= 0; nextCol--)
 			{
 				buttonId = "#B" + (row).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextCol++;
 
@@ -228,12 +228,12 @@ function main()
 
 		// Check right side
 		buttonId = "#B" + (row).toString() + "-" + (col + 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextCol = col + 2; nextCol <= 9; nextCol++)
 			{
 				buttonId = "#B" + (row).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextCol--;
 
@@ -252,12 +252,12 @@ function main()
 
 		// Check bottom-left side
 		buttonId = "#B" + (row + 1).toString() + "-" + (col - 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row + 2, nextCol = col - 2; nextRow <= 9 && nextCol>= 0; nextRow++, nextCol--)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextRow--;
 					nextCol++;
@@ -278,12 +278,12 @@ function main()
 
 		// Check bottom side
 		buttonId = "#B" + (row + 1).toString() + "-" + (col).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row + 2; nextRow <= 9; nextRow++)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (col).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextRow--;
 
@@ -302,12 +302,12 @@ function main()
 
 		// Check bottom-right side
 		buttonId = "#B" + (row + 1).toString() + "-" + (col + 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row + 2, nextCol = col + 2; nextRow <= 9 && nextCol>= 0; nextRow++, nextCol++)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					nextRow--;
 					nextCol--;
@@ -345,17 +345,17 @@ function main()
 
 		if (playerTurn == 0)
 		{
-			playerSign = 'O';
-			enemySign = 'X';
+			playerSign = 'white';
+			enemySign = 'black';
 		}
 		else
 		{
-			playerSign = 'X';
-			enemySign = 'O';
+			playerSign = 'black';
+			enemySign = 'white';
 		}
 
 		buttonId = "#B" + (row).toString() + "-" + (col).toString();
-		if ($(buttonId).text() != '')
+		if ($(buttonId).style.backgroundColor != 'green')
 		{
 			toastr.error('Slot already filled', 'Invalid Move');
 			return false;
@@ -363,12 +363,12 @@ function main()
 
 		// Check top-left side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col - 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row - 2, nextCol = col - 2; nextRow >= 0 && nextCol >= 0; nextRow--, nextCol--)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -377,12 +377,12 @@ function main()
 
 		// Check top side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{
 			for (nextRow = row - 2; nextRow >= 0; nextRow--)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (col).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -391,12 +391,12 @@ function main()
 
 		// Check top-right side
 		buttonId = "#B" + (row - 1).toString() + "-" + (col + 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{	
 			for (nextRow = row - 2, nextCol = col + 2; nextRow >= 0 && nextCol <= 9; nextRow--, nextCol++)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -405,12 +405,12 @@ function main()
 
 		// Check left side
 		buttonId = "#B" + (row).toString() + "-" + (col - 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{	
 			for (nextCol = col - 2; nextCol >= 0; nextCol--)
 			{
 				buttonId = "#B" + (row).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -419,12 +419,12 @@ function main()
 
 		// Check right side
 		buttonId = "#B" + (row).toString() + "-" + (col + 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{	
 			for (nextCol = col - 2; nextCol <= 9; nextCol++)
 			{
 				buttonId = "#B" + (row).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -433,12 +433,12 @@ function main()
 
 		// Check bottom-left side
 		buttonId = "#B" + (row + 1).toString() + "-" + (col - 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{	
 			for (nextRow = row + 2, nextCol = col - 2; nextRow <= 9 && nextCol >= 0; nextRow++, nextCol--)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -447,12 +447,12 @@ function main()
 
 		// Check bottom side
 		buttonId = "#B" + (row + 1).toString() + "-" + (col).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{	
 			for (nextRow = row + 2; nextRow <= 9; nextRow++)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (col).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
@@ -461,12 +461,12 @@ function main()
 
 		// Check bottom-right side
 		buttonId = "#B" + (row + 1).toString() + "-" + (col + 1).toString();
-		if ($(buttonId).text() == enemySign)
+		if ($(buttonId).style.backgroundColor == enemySign)
 		{	
 			for (nextRow = row + 2, nextCol = col + 2; nextRow <= 9 && nextCol <= 9; nextRow++, nextCol++)
 			{
 				buttonId = "#B" + (nextRow).toString() + "-" + (nextCol).toString();
-				if ($(buttonId).text() == playerSign)
+				if ($(buttonId).style.backgroundColor == playerSign)
 				{
 					return true;
 				}
