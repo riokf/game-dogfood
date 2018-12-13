@@ -38,8 +38,28 @@ function main()
 
 	function initialize()
 	{
+		socket.emit("connectionEvent");
+
 		toastr.options.preventDuplicates = true;
 		toastr.options.extendedTimeOut = 1;
+
+		socket.on('gameStart', function() {
+			$("*").show();
+		});
+
+		socket.on('gamePause', function() {
+			$('.grid').hide();
+			$('strong').hide();
+			$('.score').hide();
+			$("#playerTurn").text("Waiting for Player 2");
+		});
+
+		socket.on('gameDelete', function() {
+			$('.grid').hide();
+			$('strong').hide();
+			$('.score').hide();
+			$("#playerTurn").text("Opposing player has disconnected");
+		});
 
 		socket.on('markEvent', function(msg, char) {
 			$(msg).text(char);
